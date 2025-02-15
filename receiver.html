@@ -17,7 +17,7 @@
         });
 
         peer.on("call", call => {
-            navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+            navigator.mediaDevices.getUserMedia({ audio: {echoCancellation:true} }).then(stream => {
                 call.answer(stream); // Answer the call with the local audio stream
                 call.on("stream", remoteStream => {
                     playAudio(remoteStream);
